@@ -1,0 +1,39 @@
+@import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
+
+*{
+  box-sizing: border-box;
+  font-family: Galmuri11, sans-serif;
+  color: var(--font-color--black);
+}
+.container{
+  width: 100%;
+  min-height: 100%;
+}
+
+.index-bg{
+  height: 100vh;
+  background-image: url(../img/background/main_bg.jpg);
+}
+
+.page-bg{
+  background-color: aliceblue;
+}
+
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.h2{
+  font-size: var(--font-size--big);
+  font-weight: var(--font-weight--bold);
+}
+
+section{
+  width: var(--mobile-width);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

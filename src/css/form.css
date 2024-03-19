@@ -1,29 +1,3 @@
-@import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
-
-
-*{
-    box-sizing: border-box;
-    color:  #333;
-}
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: Galmuri11, sans-serif;
-    background-color: aliceblue;
-}
-.h2{
-    font-size: var(--font-size--big);
-    font-weight: var(--font-weight--bold);
-}
-section{
-    width: var(--mobile-width);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
 .form{
     width: 100%;
     display: flex;
@@ -88,4 +62,12 @@ input::placeholder{
     height: 200px;
     border-radius: 10px;
     background-color: bisque;
+}
+
+.form__preview img{
+    width: 100%; 
+    height: 100%;
+    object-fit: cover; 
+    object-position: center;
+    border-radius: 10px;
 }

@@ -1,20 +1,41 @@
-header{
-    width: 100%;
-    background-color: red;
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
+header {
+  width: 100%;
+  background-color: red;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  position: sticky;
+  top: 0;
 
-    position: relative;
-    position: sticky;
-    top: 0;
+  padding: .5rem 0;
+}
+.header__logo{
+  padding: 0 .5rem;
 }
 
-.hidden{
-    display: none;
+.hidden {
+  display: none;
 }
 
-.header__nav{
-    position: absolute;
-    top: 100%;
+.nav-btn{
+  background: none;
+  border: none;
+}
+
+.header__nav {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+}
+
+.header__list{
+  background-color: brown;
+}
+
+.header__item{
+  padding: 1rem;
+}
+
+.header__item:hover{
+  background-color: blanchedalmond;  
 }
