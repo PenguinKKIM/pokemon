@@ -12,10 +12,6 @@ header {
   padding: 0.5rem 0;
 }
 
-.hidden {
-  display: none;
-}
-
 .nav-btn {
   background: none;
   border: none;
@@ -28,13 +24,29 @@ header {
 }
 
 .header__list {
-  background-color: brown;
+  background-color: var(--flying);
 }
 
 .header__item {
   padding: 1rem;
 }
 
+.header__item a {
+  display: flex;
+  align-items: center;
+  gap: var(--flex-gap--small);
+  font-weight: 600;
+}
+
 .header__item:hover {
-  background-color: blanchedalmond;
+  background-color: rgb(247, 173, 0);
+  transition: 0.2s;
+}
+
+.header__icon {
+  width: 35px;
+  height: 35px;
+  background-color: white;
+  padding: 0.1rem;
+  border-radius: 5px;
 }
