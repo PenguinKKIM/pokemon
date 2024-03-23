@@ -1,63 +1,97 @@
 <!DOCTYPE html>
 <html lang="ko ">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/vars.css" />
+    <link rel="stylesheet" href="../css/container.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/form.css" />
+    <title>트레이너 입력 폼</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/vars.css">
-  <link rel="stylesheet" href="../css/container.css">
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/form.css">
-  <title>트레이너 입력 폼</title>
-</head>
-
-<body>
-
-  <header class="header">
-    <div class="header__logo">
-      <h1>포켓몬 트레이너 등록하기</h1>
-    </div>
-    <button type="menu" class="nav-btn">
-      <img src="../img/icon/ball.png" alt="">
-    </button>
-    <nav class="header__nav hidden">
-      <ul class="header__list">
-        <li class="header__item"><a href="form.html">트레이너 등록하기</a></li>
-        <li class="header__item"><a href="trainerlist.html">트레이너 목록보기</a></li>
-        <li class="header__item"><a href="pokemonlist.html">포켓몬 정보 보기</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section>
-      <h2 class="h2">트레이너 정보를 입력해주세요</h2>
-      <form action="" class="form">
-        <div class="form__field-container">
-          <div class="form__field-group">
-            <label for="name" class="form__label">트레이너 이름</label>
-            <input type="text" class="form__field form__field--text" id="name" placeholder="트레이너 이름을 입력하세요" required/>
-          </div>
-          <div class="form__field-group">
-            <label for="address" class="form__label">주소</label>
-            <input type="text" class="form__field form__field--text" id="address" placeholder="사는 곳을 입력하세요." required>
-          </div>
-          <div class="form__field-group">
-            <label for="profileImg" class="form__label">프로필 사진</label>
-            <input type="file" class="form__field form__field--file" id="profileImg" placeholder="사진을 등록해주세요">
-          </div>
-          <div class="form__preview">
-            <img src="./favicon.png" alt="임시이미지">
-          </div>
-          <button type="submit" class="form__button">저장하기</button>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="title-logo title-logo--nav">
+          <img src="../img/logo/title_logo.gif" alt="타이틀로고 피카츄" class="title-logo__img" />
+          <div class="title-logo__text">트레이너 관리 시스템</div>
         </div>
-      </form>
-    </section>
-  </main>
+        <button type="menu" class="nav-btn">
+          <img src="../img/icon/ball.png" alt="" />
+        </button>
+        <nav class="header__nav hidden">
+          <ul class="header__list">
+            <li class="header__item"><a href="form.html">트레이너 등록하기</a></li>
+            <li class="header__item"><a href="trainerlist.html">트레이너 목록보기</a></li>
+            <li class="header__item"><a href="pokemonlist.html">포켓몬 정보 보기</a></li>
+          </ul>
+        </nav>
+      </header>
 
-  <script src='../js/header.js'></script>
-  <script src="../js/formDB.js"></script>
-</body>
+      <main>
+        <section>
+          <h2 class="h2">트레이너 정보를 입력해주세요</h2>
+          <form action="" class="form">
+            <div class="form__field-container">
+              <div class="form__field-group">
+                <label for="name" class="form__label">트레이너 이름</label>
+                <input
+                  type="text"
+                  class="form__field form__field--text"
+                  id="name"
+                  placeholder="트레이너 이름을 입력하세요"
+                />
+              </div>
+              <div class="form__field-group">
+                <label for="address" class="form__label">주소</label>
+                <input
+                  type="text"
+                  class="form__field form__field--text"
+                  id="address"
+                  placeholder="사는 곳을 입력하세요."
+                />
+              </div>
+              <div class="form__field-group">
+                <label for="introText" class="form__label">간단한 인사말</label>
+                <input
+                  type="text"
+                  class="form__field form__field--text"
+                  id="introText"
+                  placeholder="간단한 인사말을 남겨주세요."
+                />
+              </div>
+              <div class="form__field-group">
+                <label for="profileImg" class="form__label">프로필 사진</label>
+                <input
+                  type="file"
+                  class="form__field form__field--file"
+                  id="profileImg"
+                  placeholder="사진을 등록해주세요"
+                  accept="image/*"
+                />
+              </div>
+              <div class="form__preview">
+                <img src="../img/default_profile_img.png" alt="임시이미지" />
+              </div>
+              <button type="submit" class="form__button">저장하기</button>
+            </div>
+          </form>
+        </section>
+      </main>
 
+      <footer class="footer">
+        <div class="footer__text">
+          더 알고 싶으신가요?<br />
+          문의사항은 <a>clfrck@naver.com</a>으로 보내주세요.<br />
+          포켓몬 트레이너 관리 시스템 ©2024.
+        </div>
+      </footer>
+    </div>
+
+    <script src="../js/header.js"></script>
+    <script src="../js/formDB.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
 </html>

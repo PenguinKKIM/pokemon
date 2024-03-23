@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./favicon.png" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/vars.css" />
+    <link rel="stylesheet" href="../css/container.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/form.css" />
+    <link rel="stylesheet" href="../css/pokemonlist.css" />
+    <title>트레이너 등록 시스템</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="./favicon.png">
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/vars.css">
-  <link rel="stylesheet" href="../css/container.css">
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/pokemonlist.css">
-  <title>트레이너 등록 시스템</title>
-</head>
-
-<body>
-  <div class='container page-bg'>
-
-    <header class="header">
-      <div class="header__logo">
-          <h1>포켓몬 트레이너 등록하기</h1>
-      </div>
-      <button type="menu" class="nav-btn">
-          <img src="../img/icon/ball.png" alt="">
-      </button>
-      <nav class="header__nav hidden">
+  <body>
+    <div class="container page-bg">
+      <header class="header">
+        <div class="title-logo title-logo--nav">
+          <img src="../img/logo/title_logo.gif" alt="타이틀로고 피카츄" class="title-logo__img" />
+          <div class="title-logo__text">트레이너 관리 시스템</div>
+        </div>
+        <button type="menu" class="nav-btn">
+          <img src="../img/icon/ball.png" alt="" />
+        </button>
+        <nav class="header__nav hidden">
           <ul class="header__list">
-              <li class="header__item"><a href="form.html">트레이너 등록하기</a></li>
-              <li class="header__item"><a href="trainerlist.html">트레이너 목록보기</a></li>
-              <li class="header__item"><a href="pokemonlist.html">포켓몬 정보 보기</a></li>
+            <li class="header__item"><a href="form.html">트레이너 등록하기</a></li>
+            <li class="header__item"><a href="trainerlist.html">트레이너 목록보기</a></li>
+            <li class="header__item"><a href="pokemonlist.html">포켓몬 정보 보기</a></li>
           </ul>
-      </nav>
-  </header>
+        </nav>
+      </header>
 
-    <main>
-      <section>
-        <h2 class='h2'>포켓몬 리스트</h2>
-        <ul class='pokemon-list pokemonList'>
-        </ul>
-      </section>
-    </main>
+      <main>
+        <section>
+          <h2 class="h2">포켓몬 리스트</h2>
+          <form class="form searchForm">
+            <input type="text" placeholder="이름이나 ID로 검색하기" class="searchInput" />
+            <button type="submit" class="form__button">검색</button>
+          </form>
+          <ul class="pokemon-list pokemonList"></ul>
+        </section>
+      </main>
+    </div>
 
-  </div>
-
-  <script src='../js/header.js'></script>
-  <script src='../js/pokemonAPI.js'></script>
-
-</body>
-
+    <script src="../js/header.js"></script>
+    <script src="../js/pokemonAPI.js"></script>
+  </body>
 </html>

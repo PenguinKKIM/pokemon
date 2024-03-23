@@ -1,120 +1,114 @@
-section{
+.pokemon-list {
   width: 90%;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  flex-grow: 1;
+  max-width: var(--flex-grow-max-item);
+  gap: var(--flex-gap--big);
 }
 
-.pokemon-list{
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.pokemon-list__item{
+.pokemon-list__item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: var(--list-background-color);
+  border-radius: var(--border-radius--normal);
   padding: 0 1rem;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-.pokemon-list__name{
+.pokemon-list__name {
   font-weight: var(--font-weight--bold);
 }
 
-.pokemon-list__types{
+.pokemon-list__types {
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: var(--flex-gap--small);
 }
 
-.pokemon-list__type{
+.pokemon-list__type {
   width: 3rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 5px;
-  padding: .2rem;
-  
+  border-radius: var(--border-radius--small);
+  padding: 0.2rem;
+
   font-size: var(--font-size--small);
   color: white;
 }
 
-.grass{
+.grass {
   background-color: var(--grass);
 }
 
-.poison{
+.poison {
   background-color: var(--poison);
 }
 
-.fire{
+.fire {
   background-color: var(--fire);
 }
 
-.normal{
+.normal {
   background-color: var(--normal);
 }
 
-.fighting{
+.fighting {
   background-color: var(--fighting);
 }
 
-.flying{
+.flying {
   background-color: var(--flying);
 }
 
-.ground{
+.ground {
   background-color: var(--ground);
 }
 
-.rock{
+.rock {
   background-color: var(--rock);
 }
 
-.bug{
+.bug {
   background-color: var(--bug);
 }
 
-.ghost{
+.ghost {
   background-color: var(--ghost);
 }
 
-.steel{
+.steel {
   background-color: var(--steel);
 }
 
-.water{
+.water {
   background-color: var(--water);
 }
 
-.electric{
+.electric {
   background-color: var(--electric);
 }
 
-.psychic{
+.psychic {
   background-color: var(--psychic);
 }
 
-.ice{
+.ice {
   background-color: var(--ice);
 }
 
-.dragon{
+.dragon {
   background-color: var(--dragon);
 }
 
-.dark{
+.dark {
   background-color: var(--dark);
 }
 
-.fairy{
+.fairy {
   background-color: var(--fairy);
 }
-
-

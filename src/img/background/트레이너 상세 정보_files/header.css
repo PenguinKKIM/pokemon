@@ -1,6 +1,6 @@
 header {
   width: 100%;
-  background-color: var(--poke-dex-red);
+  background-color: var( --poke-dex-red);
   display: flex;
   justify-content: space-between;
   flex-grow: 1;
@@ -9,14 +9,14 @@ header {
   position: sticky;
   top: 0;
 
-  padding: 0.5rem 0;
+  padding: .5rem 0;
 }
 
 .hidden {
   display: none;
 }
 
-.nav-btn {
+.nav-btn{
   background: none;
   border: none;
 }
@@ -27,14 +27,14 @@ header {
   width: 100%;
 }
 
-.header__list {
+.header__list{
   background-color: brown;
 }
 
-.header__item {
+.header__item{
   padding: 1rem;
 }
 
-.header__item:hover {
-  background-color: blanchedalmond;
+.header__item:hover{
+  background-color: blanchedalmond;  
 }
