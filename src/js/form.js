@@ -4,21 +4,6 @@ const DB_Version = 1; //소수인식 못함 쓰지말것
 
 let db;
 
-document.getElementById("deleteDbButton").addEventListener("click", function () {
-  const DB_NAME = "TrainerDatabase";
-
-  const deleteRequest = indexedDB.deleteDatabase(DB_NAME);
-
-  deleteRequest.onerror = function (event) {
-    console.error("Database deletion error:", event.target.error);
-  };
-
-  deleteRequest.onsuccess = function (event) {
-    console.log("Database deleted successfully");
-    alert("Database deleted successfully.");
-  };
-});
-
 function openDatabase(callback) {
   const dbRequest = window.indexedDB.open(DB_NAME, DB_Version);
 
