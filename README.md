@@ -70,6 +70,12 @@
 - [x] JavaScript
   - DOM event 조작
 
+## 유저플로우
+
+![](https://raw.githubusercontent.com/PenguinKKIM/pokemon/main/userflow.png)
+
+
+
 ## 새로 시도해본것
 
 ### 데이터 베이스의 사용
