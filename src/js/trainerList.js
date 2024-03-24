@@ -74,8 +74,12 @@ function searchTrainers(searchKeyword) {
 
 function displayDataOnPage(data) {
   const container = document.querySelector(".trainer-list");
+  const noDataElement = document.querySelector(".noData");
   container.innerHTML = "";
 
+  if (data.length !== 0) {
+    noDataElement.style.display = "none";
+  }
   data.forEach(trainer => {
     const trainerElement = document.createElement("li");
     trainerElement.classList.add("trainer-list__items");

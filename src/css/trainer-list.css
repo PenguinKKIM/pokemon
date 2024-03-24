@@ -1,3 +1,17 @@
+.no-data {
+  height: 500px;
+}
+
+.no-data__text {
+  font-size: var(--font-size--big);
+  font-weight: var(--font-weight--bold);
+}
+
+.no-data__link {
+  font-weight: var(--font-weight--bold);
+  color: var(--fire);
+}
+
 .trainer-list {
   width: 100%;
 
