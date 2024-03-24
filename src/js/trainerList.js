@@ -1,12 +1,19 @@
 const DB_NAME = "TrainerDatabase";
 const DB_Version = 1;
+const loadingElement = document.querySelector(".loading");
 
 document.addEventListener("DOMContentLoaded", () => {
+  loading(true);
   const dbRequest = window.indexedDB.open(DB_NAME, DB_Version);
 
   dbRequest.onsuccess = event => {
     const db = event.target.result;
     readAllData(db);
+  };
+
+  dbRequest.onerror = event => {
+    console.error("Database error:", event.target.error);
+    loading(false);
   };
 });
 
@@ -18,6 +25,7 @@ function readAllData(db) {
   request.onsuccess = () => {
     console.log("Data retrieved:", request.result);
     displayDataOnPage(request.result);
+    loading(false);
   };
 }
 
@@ -32,7 +40,9 @@ searchForm.addEventListener("submit", event => {
 });
 
 function searchTrainers(searchKeyword) {
+  loading(true);
   const dbRequest = window.indexedDB.open(DB_NAME, DB_Version);
+
   dbRequest.onsuccess = event => {
     const db = event.target.result;
     const transaction = db.transaction(["trainers"], "readonly");
@@ -52,6 +62,7 @@ function searchTrainers(searchKeyword) {
         cursor.continue();
       } else {
         displayDataOnPage(results);
+        loading(true);
       }
     };
   };
@@ -67,7 +78,7 @@ function displayDataOnPage(data) {
 
   data.forEach(trainer => {
     const trainerElement = document.createElement("li");
-    trainerElement.classList.add("tranier-list__items");
+    trainerElement.classList.add("trainer-list__items");
     trainerElement.innerHTML = ` 
     <div class="trainer-list__item">
 
@@ -103,4 +114,15 @@ function displayDataOnPage(data) {
     });
     trainerElement.appendChild(btn);
   });
+}
+
+function loading(isLoading) {
+  if (isLoading) {
+    loadingElement.style.display = "flex";
+    setTimeout(() => {
+      loadingElement.style.display = "none";
+    }, 5000);
+  } else {
+    loadingElement.style.display = "none";
+  }
 }

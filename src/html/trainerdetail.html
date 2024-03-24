@@ -6,13 +6,20 @@
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/vars.css" />
     <link rel="stylesheet" href="../css/container.css" />
-    <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/form.css" />
     <link rel="stylesheet" href="../css/trainer-list.css" />
   </head>
 
   <body>
     <div class="container">
+      <div class="loading" style="display: none">
+        <div>
+          <img src="../img/icon/ball_icon.png" alt="로딩이미지" class="loading__img" />
+          <img src="../img/icon/ball_icon02.png" alt="로딩이미지" class="loading__img" />
+          <img src="../img/icon/ball_icon.png" alt="로딩이미지" class="loading__img" />
+        </div>
+        <div class="loading__text">...LOADING...</div>
+      </div>
       <header class="header">
         <div class="title-logo title-logo--nav">
           <img src="../img/logo/title_logo.gif" alt="타이틀로고 피카츄" class="title-logo__img" />
@@ -45,7 +52,7 @@
         <section>
           <h2 class="h2">트레이너 상세보기</h2>
 
-          <div class="tranier-list__items">
+          <div class="trainer-list__items">
             <!-- 트레이너 정보가 여기에 표시됩니다 -->
           </div>
 
@@ -60,7 +67,10 @@
         <div class="footer__text">
           더 알고 싶으신가요?<br />
           문의사항은 <a>clfrck@naver.com</a>으로 보내주세요.<br />
-          포켓몬 트레이너 관리 시스템 ©2024.
+          포켓몬 트레이너 관리 시스템 ©2024. <br />
+          <a href="https://www.flaticon.com/free-icons/pokemon" title="pokemon icons"
+            >Pokemon icons created by Darius Dan - Flaticon</a
+          >
         </div>
       </footer>
     </div>

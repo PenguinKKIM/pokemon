@@ -2,9 +2,18 @@ let offset = 0;
 const limit = 20;
 let isFetching = false;
 
-const searchForm = document.querySelector(".searchForm");
-const searchText = document.querySelector(".searchText");
-const searchBtn = document.querySelector(".searchBtn");
+const loadingElement = document.querySelector(".loading");
+
+function loading(isLoading) {
+  if (isLoading) {
+    loadingElement.style.display = "flex";
+    setTimeout(() => {
+      loadingElement.style.display = "none";
+    }, 5000);
+  } else {
+    loadingElement.style.display = "none";
+  }
+}
 
 async function setPokeNameEn(offset, limit) {
   try {
@@ -93,6 +102,7 @@ async function setPokeTypes(pokeNum) {
 async function displayPokemons() {
   if (isFetching) return;
   isFetching = true;
+  loading(true);
 
   const pokeNum = await setPokeNameEn(offset, limit);
   const pokemonKoreanNames = await setPokeNameKor(pokeNum);
@@ -103,6 +113,7 @@ async function displayPokemons() {
 
   if (!listElement) {
     console.error("표시할 아이템이 없습니다");
+    loading(false);
     return;
   }
 
@@ -218,6 +229,7 @@ async function displayPokemons() {
 
   isFetching = false;
   offset += limit;
+  loading(false);
 }
 
 function throttle(func, limit) {

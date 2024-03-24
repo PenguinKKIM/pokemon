@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/vars.css" />
     <link rel="stylesheet" href="../css/container.css" />
-    <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/form.css" />
     <link rel="stylesheet" href="../css/pokemonlist.css" />
     <title>트레이너 등록 시스템</title>
@@ -15,6 +14,14 @@
 
   <body>
     <div class="container page-bg">
+      <div class="loading">
+        <div>
+          <img src="../img/icon/ball_icon.png" alt="로딩이미지" class="loading__img" />
+          <img src="../img/icon/ball_icon02.png" alt="로딩이미지" class="loading__img" />
+          <img src="../img/icon/ball_icon.png" alt="로딩이미지" class="loading__img" />
+        </div>
+        <div class="loading__text">...LOADING...</div>
+      </div>
       <header class="header">
         <div class="title-logo title-logo--nav">
           <img src="../img/logo/title_logo.gif" alt="타이틀로고 피카츄" class="title-logo__img" />
@@ -47,10 +54,6 @@
       <main>
         <section>
           <h2 class="h2">포켓몬 리스트</h2>
-          <form class="form searchForm">
-            <input type="text" placeholder="이름이나 ID로 검색하기" class="searchInput" />
-            <button type="submit" class="form__button">검색</button>
-          </form>
           <ul class="pokemon-list pokemonList"></ul>
         </section>
       </main>

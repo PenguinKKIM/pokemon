@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!name.trim() || !address.trim()) {
       Swal.fire({
-        text: "이름과 주소는 반드시 입력해야 합니다.",
+        html: '<img src="../img/icon/warning_icon.png" style="width:40px; height:40px; margin: 1rem;"><p>이름과 주소는 반드시 입력해야 합니다.</p>',
         confirmButtonColor: "#5185c5",
         confirmButtonText: "확인",
       });
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       transaction.oncomplete = () => {
         Swal.fire({
-          text: "트레이너 등록이 완료되었습니다!",
+          html: '<img src="../img/icon/success_icon.png" style="width:40px; height:40px; margin: 1rem;"><p> 트레이너 등록이 완료되었습니다 </p>',
           confirmButtonColor: "#5185c5",
           confirmButtonText: "확인",
         }).then(result => {

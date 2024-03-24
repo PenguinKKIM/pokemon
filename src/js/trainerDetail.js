@@ -8,12 +8,14 @@ const DEFAULT_IMAGE = "../img/default_profile_img.png";
 const DB_NAME = "TrainerDatabase";
 const DB_VERSION = 1;
 
+const loadingEl = document.getElementById("loading");
+
 let currentTrainer;
 
 editButton.addEventListener("click", () => {
   try {
     Swal.fire({
-      text: "수정하시겠습니까?",
+      html: '<img src="../img/icon/warning_icon.png" style="width:40px; height:40px; margin: 1rem;"><p>수정 하시겠습니까?</p>',
       confirmButtonColor: "#5185c5",
       confirmButtonText: "확인",
       showCancelButton: true,
@@ -36,7 +38,7 @@ editButton.addEventListener("click", () => {
 deleteButton.addEventListener("click", () => {
   try {
     Swal.fire({
-      text: "삭제하시겠습니까?",
+      html: '<img src="../img/icon/warning_icon.png" style="width:40px; height:40px; margin: 1rem;"><p>삭제하시겠습니까?</p>',
       confirmButtonColor: "#5185c5",
       confirmButtonText: "확인",
       showCancelButton: true,
@@ -59,7 +61,7 @@ deleteButton.addEventListener("click", () => {
 updateButton.addEventListener("click", () => {
   try {
     Swal.fire({
-      text: "저장 하시겠습니까?",
+      html: '<img src="../img/icon/warning_icon.png" style="width:40px; height:40px; margin: 1rem;"><p>저장 하시겠습니까?</p>',
       confirmButtonColor: "#5185c5",
       confirmButtonText: "확인",
       showCancelButton: true,
@@ -91,7 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function fetchTrainerDetails(trainerId) {
   const dbRequest = window.indexedDB.open(DB_NAME, DB_VERSION); //DB OPEN
-
   dbRequest.onsuccess = event => {
     const db = event.target.result;
     const transaction = db.transaction(["trainers"], "readonly");
@@ -104,14 +105,20 @@ function fetchTrainerDetails(trainerId) {
         currentTrainer = trainer;
         displayTrainerDetails(currentTrainer);
       } else {
-        document.getElementById("trainerDetails").innerHTML = "트레이너 정보를 찾을 수 없습니다.";
+        console.error("트레이너 정보가 없습니다");
       }
     };
+    request.onerror = () => {
+      console.error("트레이너 정보 로딩 중 오류 발생");
+    };
+  };
+  dbRequest.onerror = event => {
+    console.error("Database error:", event.target.error);
   };
 }
 
 function displayTrainerDetails() {
-  const detailsContainer = document.querySelector(".tranier-list__items");
+  const detailsContainer = document.querySelector(".trainer-list__items");
   detailsContainer.innerHTML = `
     <div class="trainer-list__item">
     <div class="form__field-group">
@@ -154,9 +161,11 @@ function editTrainer() {
 
   const name = document.getElementById("name");
   const address = document.getElementById("address");
+  const introText = document.getElementById("introText");
 
   name.readOnly = false;
   address.readOnly = false;
+  introText.readOnly = false;
 }
 
 async function deleteTrainer(trainerId) {
@@ -171,7 +180,7 @@ async function deleteTrainer(trainerId) {
     await tx.complete;
 
     Swal.fire({
-      text: "트레이너 삭제가 완료되었습니다.",
+      html: '<img src="../img/icon/warning_icon.png" style="width:40px; height:40px; margin: 1rem;"><p> 트레이너 삭제가 완료되었습니다 </p>',
       confirmButtonColor: "#5185c5",
       confirmButtonText: "확인",
     }).then(result => {
@@ -189,10 +198,11 @@ async function deleteTrainer(trainerId) {
 function upDateTrainer(trainerId) {
   const updatedName = document.getElementById("name").value;
   const updatedAddress = document.getElementById("address").value;
+  const updatedintroText = document.getElementById("introText").value;
 
   if (!updatedName.trim() || !updatedAddress.trim()) {
     Swal.fire({
-      text: "이름과 주소는 반드시 입력해야 합니다.",
+      html: '<img src="../img/icon/warning_icon.png" style="width:40px; height:40px; margin: 1rem;"><p>이름과 주소는 반드시 입력해야 합니다.</p>',
       confirmButtonColor: "#5185c5",
       confirmButtonText: "확인",
     });
@@ -204,15 +214,22 @@ function upDateTrainer(trainerId) {
     const reader = new FileReader();
     reader.onload = event => {
       const imageData = event.target.result;
-      upDateToDB(trainerId, updatedName, updatedAddress, imageData);
+      upDateToDB(trainerId, updatedName, updatedAddress, updatedintroText, imageData, currentTrainer.createdAt);
     };
     reader.readAsDataURL(file);
   } else {
-    upDateToDB(trainerId, updatedName, updatedAddress, currentTrainer.profileImage);
+    upDateToDB(
+      trainerId,
+      updatedName,
+      updatedAddress,
+      updatedintroText,
+      currentTrainer.profileImage,
+      currentTrainer.createdAt,
+    );
   }
 }
 
-function upDateToDB(trainerId, name, address, imageData) {
+function upDateToDB(trainerId, name, address, introText, imageData, createdAt) {
   const dbRequest = window.indexedDB.open(DB_NAME, DB_VERSION);
   dbRequest.onsuccess = event => {
     const db = event.target.result;
@@ -223,14 +240,16 @@ function upDateToDB(trainerId, name, address, imageData) {
       id: Number(trainerId),
       name: name,
       address: address,
+      introText,
       profileImage: imageData,
+      createdAt,
     };
 
     const updateRequest = store.put(updatedTrainer);
 
     updateRequest.onsuccess = () => {
       Swal.fire({
-        text: "트레이너 정보가 성공적으로 업데이트 되었습니다.",
+        html: '<img src="../img/icon/success_icon.png" style="width:40px; height:40px; margin: 1rem;"><p> 트레이너 정보가 업데이트 되었습니다 </p>',
         confirmButtonColor: "#5185c5",
         confirmButtonText: "확인",
       }).then(result => {
@@ -249,7 +268,7 @@ function upDateToDB(trainerId, name, address, imageData) {
 deleteImgButton.addEventListener("click", () => {
   try {
     Swal.fire({
-      text: "기존 이미지를 삭제 하시겠습니까?",
+      html: '<img src="../img/icon/warning_icon.png" style="width:40px; height:40px; margin: 1rem;"><p>기존 이미지를 삭제하시겠습니까?</p>',
       confirmButtonColor: "#5185c5",
       confirmButtonText: "확인",
       showCancelButton: true,
@@ -284,7 +303,7 @@ function updateTrainerImage(trainerId, imageData) {
       const updateRequest = store.put(trainer);
       updateRequest.onsuccess = () => {
         Swal.fire({
-          text: "트레이너 프로필 이미지가 성공적으로 삭제 되었습니다.",
+          html: '<img src="../img/icon/success_icon.png" style="width:40px; height:40px; margin: 1rem;"><p> 트레이너 이미지가 삭제되었습니다</p>',
           confirmButtonColor: "#5185c5",
           confirmButtonText: "확인",
         }).then(result => {
@@ -311,3 +330,11 @@ imageInput.addEventListener("change", function (event) {
     reader.readAsDataURL(file);
   }
 });
+
+function loading(isLoading) {
+  if (isLoading) {
+    loadingElement.style.display = "flex";
+  } else {
+    loadingElement.style.display = "none";
+  }
+}
